@@ -1,5 +1,8 @@
 
-# Vulnerable Java App
+# Code Fixes
 
-Intentionally vulnerable Java/Spring Boot application for AppSec code review demonstrations.
-DO NOT deploy.
+## Supply Chain Vulnerabilities
+
+In order to fix supply chain vulnerabilities, Dependabot was enabled in the repository settings and the following packages were upgraded: 
+- Spring Framework
+- jackson-databind
