@@ -14,9 +14,9 @@ Framework: Spring Boot (intentionally misconfigured)
 
 Purpose: Code review & vulnerability identification
 
-## Vulnerabilities Demonstrated
+# Vulnerabilities Demonstrated
 
-# Injection Vulnerabilities
+## Injection Vulnerabilities
 
 SQL Injection (JDBC string concatenation)
 
@@ -26,7 +26,7 @@ Expression Injection (Spring Expression Language)
 
 Insecure Deserialization
 
-# Supply Chain Vulnerabilities
+## Supply Chain Vulnerabilities
 
 Outdated vulnerable dependency
 
