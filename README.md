@@ -6,3 +6,12 @@
 In order to fix supply chain vulnerabilities, Dependabot was enabled in the repository settings and the following packages were upgraded: 
 - Spring Framework
 - jackson-databind
+
+## Spring Framework
+This vulnerability generally speaking has a very high liklihood of exploitation (EPSS score of > 90%) and would cause significant impact if exploitated considering that it is vulnerable to remote code execution. When it comes to this repositories code and whether or not the appliction would be vulnerable to CVE-2022-22965, the following analysis has been done to examine exploitability: 
+
+- JDK 9 or higher. It appears as though we are running a higher version for this application
+- Apache Tomcat as Servlet container. Apache Tomcat is embedded via spring boot.
+- The code is packaged as a WAR. This is not the case for this application as it is being packaged as a JAR.
+
+Because the code doesn't meet the WAR packaging requirement, this application would not be vulnerable to exploitation despite the fact that an older package is being used. In order to follow best practices and be extra careful, I will still be upgrading this package but the analysis above shows that this specific application wouldn't be vulnerable to the CVE outlined above. 
