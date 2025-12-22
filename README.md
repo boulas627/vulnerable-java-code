@@ -49,3 +49,7 @@ This vulnerability generally speaking has a very high liklihood of exploitation 
 - The code is packaged as a WAR. This is not the case for this application as it is being packaged as a JAR.
 
 Because the code doesn't meet the WAR packaging requirement, this application would not be vulnerable to exploitation despite the fact that an older package is being used. In order to follow best practices and be extra careful, I will still be upgrading this package but the analysis above shows that this specific application wouldn't be vulnerable to the CVE outlined above. 
+
+
+## Jackson-Databind 
+This package appears to be vulnerable because of an inability to properly deserialize the data as outlined in CWE-502. Deserialization is the process of converting a set of bytes back into a fully functional Java object. This is essentially the process of rebuiliding an object and when user-controlled data is processed without the proper sanitization, a number of vulnerabilities may be present such as remote code execution or denial of service. It is likely that exploitation is possible when examining this vulnerability and because of this, it is best to upgrade the package to the necessary version.  
