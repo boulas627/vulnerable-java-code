@@ -16,7 +16,10 @@ public class UserService {
         Connection conn = dataSource.getConnection();
         Statement stmt = conn.createStatement();
         String query = "SELECT role FROM users WHERE username = '" + username + "'";
-        ResultSet rs = stmt.executeQuery(query);
+
+        PreparedStatement pstmt = conn.prepareStatement(query); 
+        
+        ResultSet rs = stmt.executeQuery(pstmt);
         if (rs.next()) {
             return rs.getString("role");
         }
