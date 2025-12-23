@@ -18,7 +18,10 @@ Purpose: Code review & vulnerability identification
 
 ## Injection Vulnerabilities
 
-SQL Injection (JDBC string concatenation)
+SQL Injection: Line 20 of UserService.java file. The username variable is processed without any input validation of the SQL query which leaves the application vulnerable to an SQL injection vulnerability. In order to remediate this vulnerability, one of the following solutions should be considered: 
+- Input sanitization and escaping special characters
+- Allow listing
+- Stored procedures 
 
 Command Injection (Runtime.exec)
 
