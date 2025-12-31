@@ -31,12 +31,24 @@ Expression Injection (Spring Expression Language): Line 15 of the UserController
 
 Insecure Deserialization: Line 10 of the DeserializeUtil.java file. For insecure deserialization vulnerabilities, an untrusted user input can be used to abuse the logic of an applications deserialization process. Serialization involves taking the object and converting it into a format that can be stored or transmitted across a network. Deserialization is the opposite of this process and involves recreating the initial object. In this specific code, a data field is user controlled and is passed into a ByteArrayInputStream() function. 
 
+
+
 ## Supply Chain Vulnerabilities
 
-Outdated vulnerable dependency
+In order to fix supply chain vulnerabilities, Dependabot was enabled in the repository settings and the following packages were upgraded: 
+- Spring Framework
+- jackson-databind
 
-Dependency confusion risk
+## Spring Framework
+This vulnerability generally speaking has a very high liklihood of exploitation (EPSS score of > 90%) and would cause significant impact if exploitated considering that it is vulnerable to remote code execution. When it comes to this repositories code and whether or not the appliction would be vulnerable to CVE-2022-22965, the following analysis has been done to examine exploitability: 
 
-No checksum / signature verification
+- JDK 9 or higher. It appears as though we are running a higher version for this application
+- Apache Tomcat as Servlet container. Apache Tomcat is embedded via spring boot.
+- The code is packaged as a WAR. This is not the case for this application as it is being packaged as a JAR.
 
-Overly permissive dependency versions
+Because the code doesn't meet the WAR packaging requirement, this application would not be vulnerable to exploitation despite the fact that an older package is being used. In order to follow best practices and be extra careful, I will still be upgrading this package but the analysis above shows that this specific application wouldn't be vulnerable to the CVE outlined above. 
+
+
+## Jackson-Databind 
+This package appears to be vulnerable because of an inability to properly deserialize the data as outlined in CWE-502. Deserialization is the process of converting a set of bytes back into a fully functional Java object. This is essentially the process of rebuiliding an object and when user-controlled data is processed without the proper sanitization, a number of vulnerabilities may be present such as remote code execution or denial of service. It is likely that exploitation is possible when examining this vulnerability and because of this, it is best to upgrade the package to the necessary version.  
+
