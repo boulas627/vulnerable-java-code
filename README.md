@@ -1,1 +1,3 @@
+# Summary
+
 This branch includes the fixes for the vulnerabilities identified in the main branch. This is supposed to simulate what a manual code review would look like in the case where a SAST scanning tool wasn't available, or a situation where an additional manual review was required from a security engineer.  
