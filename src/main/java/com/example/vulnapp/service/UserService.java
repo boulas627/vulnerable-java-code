@@ -18,7 +18,9 @@ public class UserService {
         String query = "SELECT role FROM users WHERE username = ?";
 
         PreparedStatement pstmt = conn.prepareStatement(query); 
+        
         pstmt.setString(1, username); 
+        # setString() will ensure that a string value is passed into the prepared statement
         
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
