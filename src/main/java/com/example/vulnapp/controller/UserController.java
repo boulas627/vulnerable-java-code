@@ -8,6 +8,8 @@ import org.springframework.expression.ExpressionParser;
 @RestController
 public class UserController {
 
+    # Spring Expression Language is used to convert a string expression into an expression object
+
     @GetMapping("/eval")
     public String eval(@RequestParam String expression) {
         ExpressionParser parser = new SpelExpressionParser();
