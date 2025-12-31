@@ -8,13 +8,13 @@ import org.springframework.expression.ExpressionParser;
 @RestController
 public class UserController {
 
-    # Spring Expression Language is used to convert a string expression into an expression object
+    // Spring Expression Language is used to convert a string expression into an expression object
 
     @GetMapping("/eval")
     public String eval(@RequestParam String expression) {
         ExpressionParser parser = new SpelExpressionParser();
 
-        # the fix below assumes that SpEL usage is required and imposes various restrictions on its usage. The best case scenario would be to remove it entirely if possible. 
+    // the fix below assumes that SpEL usage is required and imposes various restrictions on its usage. The best case scenario would be to remove it entirely if possible. 
 
         StandardEvaluationContext context = new StandardEvaluationContext();
 
